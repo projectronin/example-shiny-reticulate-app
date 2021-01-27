@@ -5,13 +5,14 @@ library(RColorBrewer)
 
 # Begin app server
 shinyServer(function(input, output) {
-    
-    system('/opt/python/3.6.5/bin/python -c "import tensorflow;print(123)"')
-  
+    reticulate::source_python('python_functions.py')
+    print('asdf')
+    system('/opt/python/3.6.5/bin/python -c "print(123); import tensorflow;"')
+    print('asdfg')
   plot_cols <- brewer.pal(11, 'Spectral')
   
   # Import python functions to R
-  reticulate::source_python('python_functions.py')
+  
   
   # Generate the requested distribution
   d <- reactive({
