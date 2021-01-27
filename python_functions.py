@@ -1,4 +1,5 @@
 import numpy as np
+import tensorflow as tf
 
 def test_string_function(string):
 	return(string)

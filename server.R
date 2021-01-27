@@ -5,6 +5,8 @@ library(RColorBrewer)
 
 # Begin app server
 shinyServer(function(input, output) {
+    
+    system('/opt/python/3.6.5/bin/python -c "import tensorflow"')
   
   plot_cols <- brewer.pal(11, 'Spectral')
   
