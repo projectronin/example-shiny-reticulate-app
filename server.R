@@ -2,6 +2,8 @@
 library(shiny)
 library(DT)
 library(RColorBrewer)
+library(dplyr)
+library(reticulate)
 
 # Begin app server
 shinyServer(function(input, output) {
@@ -9,7 +11,14 @@ shinyServer(function(input, output) {
   plot_cols <- brewer.pal(11, 'Spectral')
   
   # Import python functions to R
-  reticulate::source_python('python_functions.py')
+  source_python('python_functions.py')
+  
+  df <- readRDS('/share/mda_trial_PA19_0095/data/standardized/dat_notes_deltalake_current_pts.RDS') %>%
+    filter(patient_letter=='AA') %>%
+    filter(encounter_date_local_tz=='2020-12-01')
+  print(df %>%
+          select(patient_id, content_html,content_text,encounter_date_local_tz) %>%
+          py$predict_ae())
   
   # Generate the requested distribution
   d <- reactive({
