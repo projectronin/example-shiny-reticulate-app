@@ -7,3 +7,5 @@ nltk==3.3
 gensim==3.8.1
 transformers==2.10.0
 numpy==1.18.1
+file:/share/rstudio-connect/pypackagedir/ds_nlp-1.0-py3-none-any.whl
+pyreadr
